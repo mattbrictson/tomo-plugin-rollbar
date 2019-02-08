@@ -1,8 +1,14 @@
-require "tomo/plugin/rollbar/version"
+require "tomo"
+require_relative "rollbar/tasks"
+require_relative "rollbar/version"
 
-module Tomo
-  module Plugin
-    module Rollbar
-    end
+module Tomo::Plugin
+  module Rollbar
+    extend Tomo::PluginDSL
+
+    tasks Tomo::Plugin::Rollbar::Tasks
+
+    defaults rollbar_env:   "%<environment>",
+             rollbar_token: nil
   end
 end

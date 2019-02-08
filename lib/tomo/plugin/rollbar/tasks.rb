@@ -7,28 +7,37 @@ module Tomo::Plugin::Rollbar
     def notify_deploy
       require_setting :rollbar_token
 
-      uri    = URI.parse 'https://api.rollbar.com/api/1/deploy/'
-      params = {
-        :local_username => remote.release[:deploy_user],
-        :access_token   => settings.fetch(:rollbar_token),
-        :environment    => settings.fetch(:rollbar_env),
-        :revision       => remote.release[:revision]
-      }
+      http_post(
+        "https://api.rollbar.com/api/1/deploy/",
+        local_username: remote.release[:deploy_user],
+        access_token:   settings.fetch(:rollbar_token),
+        environment:    settings.fetch(:rollbar_env),
+        revision:       remote.release[:revision]
+      )
 
-      logger.debug "Building Rollbar POST to #{uri} with #{params.inspect}"
+      logger.info("Rollbar notification complete.")
+    end
 
-      request      = Net::HTTP::Post.new(uri.request_uri)
+    private
+
+    def http_post(url, params)
+      uri = URI(url)
+      request = Net::HTTP::Post.new(uri.request_uri)
       request.body = ::JSON.dump(params)
 
+      logger.debug("Building Rollbar POST to #{uri} with #{params.inspect}")
       return if dry_run?
 
-      Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
+      response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
         http.request(request)
       end
+      handle_error(response)
+    end
 
-      # TODO: raise if request fails
+    def handle_error(response)
+      return if response.is_a?(Net::HTTPSuccess)
 
-      logger.info 'Rollbar notification complete.'
+      die("#{response.code} #{response.message}")
     end
   end
 end
