@@ -8,7 +8,7 @@ module Tomo::Plugin
 
     tasks Tomo::Plugin::Rollbar::Tasks
 
-    defaults rollbar_env:   "%<environment>",
+    defaults rollbar_env:   nil,
              rollbar_token: nil
   end
 end

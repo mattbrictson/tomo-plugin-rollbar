@@ -5,7 +5,7 @@ require "uri"
 module Tomo::Plugin::Rollbar
   class Tasks < ::Tomo::TaskLibrary
     def notify_deploy
-      require_setting :rollbar_token
+      require_settings :rollbar_env, :rollbar_token
 
       http_post(
         "https://api.rollbar.com/api/1/deploy/",
