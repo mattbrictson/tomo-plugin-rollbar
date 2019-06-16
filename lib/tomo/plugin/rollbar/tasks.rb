@@ -24,11 +24,12 @@ module Tomo::Plugin::Rollbar
       uri = URI(url)
       request = Net::HTTP::Post.new(uri.request_uri)
       request.body = ::JSON.dump(params)
+      request["Content-Type"] = "application/json"
 
       logger.debug("Building Rollbar POST to #{uri} with #{params.inspect}")
       return if dry_run?
 
-      response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
+      response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         http.request(request)
       end
       handle_error(response)
