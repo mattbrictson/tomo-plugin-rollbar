@@ -1,38 +1,60 @@
-# Tomo::Plugin::Rollbar
+# tomo-plugin-rollbar
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tomo/plugin/rollbar`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/tomo-plugin-rollbar.svg)](https://rubygems.org/gems/tomo-plugin-rollbar)
+[![Travis](https://img.shields.io/travis/mattbrictson/tomo-plugin-rollbar.svg?label=travis)](https://travis-ci.org/mattbrictson/tomo-plugin-rollbar)
+[![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
 
-TODO: Delete this and the text above, and describe your gem
+This is a [tomo](https://github.com/mattbrictson/tomo) plugin that sends a notification to [Rollbar](https://rollbar.com) on a successful deploy.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Run:
 
-```ruby
-gem 'tomo-plugin-rollbar'
+```
+$ gem install tomo-plugin-rollbar
 ```
 
-And then execute:
+Or add it to your Gemfile:
 
-    $ bundle
+```ruby
+gem "tomo-plugin-rollbar"
+```
 
-Or install it yourself as:
+Then add the following to `.tomo/config.rb`:
 
-    $ gem install tomo-plugin-rollbar
+```ruby
+plugin "rollbar"
 
-## Usage
+set rollbar_env: "production"
+set rollbar_token: "YOUR_TOKEN_HERE"
 
-TODO: Write usage instructions here
+deploy do
+  # ...
+  # Place this task at *end* of the deploy
+  run "rollbar:notify_deploy"
+end
+```
 
-## Development
+If you are not comfortable storing the `rollbar_token` in the configuration file, you can alternatively provide it via a `TOMO_ROLLBAR_TOKEN` environment variable.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Settings
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+| Name            | Purpose                                                                                         | Default |
+| --------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| `rollbar_env`   | The environment being deployed, e.g. "production".                                              | `nil`   |
+| `rollbar_token` | The Rollbar `post_server_item` project access token that will be used to post the notification. | `nil`   |
+
+## Tasks
+
+### rollbar:notify_deploy
+
+Sends an HTTP POST notification to the Rollbar API describing the release that was successfully deployed. This includes the user who performed the deploy, the environment, the git revision.
+
+Note that this task must run _after_ `git:create_release` in the deploy sequence in order to have access to the release information.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tomo-plugin-rollbar. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome.
 
 ## License
 
@@ -40,4 +62,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Tomo::Plugin::Rollbar project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tomo-plugin-rollbar/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mattbrictson/tomo-plugin-rollbar/blob/master/CODE_OF_CONDUCT.md).
