@@ -11,4 +11,4 @@ rvm:
 - 2.6.4
 - ruby-head
 before_install: gem install bundler -v 2.0.2
-script: bundle exec rake
+script: bundle exec rake test

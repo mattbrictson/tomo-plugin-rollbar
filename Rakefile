@@ -17,16 +17,20 @@ task bump: %w[bump:bundler bump:ruby bump:year]
 namespace :bump do
   task :bundler do
     version = Gemfile.bundler_version
+    replace_in_file ".circleci/config.yml", /bundler -v (\S+)/ => version
     replace_in_file ".travis.yml", /bundler -v (\S+)/ => version
   end
 
   task :ruby do
     lowest = RubyVersions.lowest_supported
     lowest_minor = RubyVersions.lowest_supported_minor
+    latest = RubyVersions.latest
 
     replace_in_file "tomo-plugin-rollbar.gemspec",
                     /ruby_version = ">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
+    replace_in_file ".circleci/config.yml",
+                    %r{circleci/ruby:([\d\.]+)} => latest
 
     travis = YAML.safe_load(open(".travis.yml"))
     travis["rvm"] = RubyVersions.latest_supported_patches + ["ruby-head"]
