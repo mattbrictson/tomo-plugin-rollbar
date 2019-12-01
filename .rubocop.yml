@@ -30,7 +30,7 @@ Metrics/LineLength:
   Exclude:
     - "*.gemspec"
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle:
     - table
     - key
