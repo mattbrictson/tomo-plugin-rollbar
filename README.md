@@ -2,10 +2,21 @@
 
 [![Gem Version](https://badge.fury.io/rb/tomo-plugin-rollbar.svg)](https://rubygems.org/gems/tomo-plugin-rollbar)
 [![Travis](https://img.shields.io/travis/mattbrictson/tomo-plugin-rollbar.svg?label=travis)](https://travis-ci.org/mattbrictson/tomo-plugin-rollbar)
-[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-rollbar.svg?style=shield)](https://circleci.com/gh/mattbrictson/tomo-plugin-rollbar)
+[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-rollbar.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-rollbar?branch=master)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that sends a notification to [Rollbar](https://rollbar.com) on a successful deploy.
+
+---
+
+- [Installation](#installation)
+- [Settings](#settings)
+- [Tasks](#tasks)
+- [Support](#support)
+- [License](#license)
+- [Code of conduct](#code-of-conduct)
+- [Contribution guide](#contribution-guide)
+
 
 ## Installation
 
@@ -53,14 +64,18 @@ Sends an HTTP POST notification to the Rollbar API describing the release that w
 
 Note that this task must run _after_ `git:create_release` in the deploy sequence in order to have access to the release information.
 
-## Contributing
+## Support
 
-Bug reports and pull requests are welcome.
+If you want to report a bug, or have ideas, feedback or questions about the gem, [let me know via GitHub issues](https://github.com/mattbrictson/tomo-plugin-rollbar/issues/new) and I will do my best to provide a helpful answer. Happy hacking!
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](LICENSE.txt).
 
-## Code of Conduct
+## Code of conduct
 
-Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mattbrictson/tomo-plugin-rollbar/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+## Contribution guide
+
+Pull requests are welcome!
