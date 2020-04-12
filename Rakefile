@@ -2,17 +2,21 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require "rubocop/rake_task"
 
-task default: %i[test rubocop]
-
-RuboCop::RakeTask.new
-
-Rake::TestTask.new("test") do |t|
+Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
   t.test_files = FileList["test/**/*_test.rb"]
 end
 
+RuboCop::RakeTask.new
+
+task default: %i[test rubocop]
 task bump: %w[bump:bundler bump:ruby bump:year]
+
+Rake::Task["release"].enhance do
+  puts "Don't forget to publish the release on GitHub!"
+  system "open https://github.com/mattbrictson/tomo-plugin-rollbar/releases"
+end
 
 namespace :bump do
   task :bundler do
@@ -29,6 +33,7 @@ namespace :bump do
 
     replace_in_file "tomo-plugin-rollbar.gemspec",
                     /ruby_version = ">= (.*)"/ => lowest
+
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
     replace_in_file ".circleci/config.yml",
                     %r{circleci/ruby:([\d\.]+)} => latest
