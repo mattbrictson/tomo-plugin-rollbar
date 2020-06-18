@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/tomo-plugin-rollbar.svg)](https://rubygems.org/gems/tomo-plugin-rollbar)
 [![Travis](https://img.shields.io/travis/mattbrictson/tomo-plugin-rollbar.svg?label=travis)](https://travis-ci.org/mattbrictson/tomo-plugin-rollbar)
-[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-rollbar.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-rollbar?branch=master)
+[![Circle](https://circleci.com/gh/mattbrictson/tomo-plugin-rollbar.svg?style=shield)](https://app.circleci.com/pipelines/github/mattbrictson/tomo-plugin-rollbar?branch=main)
 [![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that sends a notification to [Rollbar](https://rollbar.com) on a successful deploy.
