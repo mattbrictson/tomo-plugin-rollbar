@@ -1,4 +1,12 @@
 source "https://rubygems.org"
-
-# Specify your gem's dependencies in tomo-plugin-rollbar.gemspec
 gemspec
+
+gem "minitest", "~> 5.11"
+gem "minitest-ci", "~> 3.4"
+gem "minitest-reporters", "~> 1.3"
+gem "rake", "~> 13.0"
+gem "rexml", "~> 3.2"
+gem "rubocop", "0.86.0"
+gem "rubocop-minitest", "0.9.0"
+gem "rubocop-performance", "1.6.1"
+gem "webmock", "~> 3.6"
