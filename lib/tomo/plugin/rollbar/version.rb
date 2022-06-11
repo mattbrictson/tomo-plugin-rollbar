@@ -4,5 +4,5 @@ module Tomo
 end
 
 module Tomo::Plugin::Rollbar
-  VERSION = "1.1.2".freeze
+  VERSION = "1.1.3".freeze
 end
