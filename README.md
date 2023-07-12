@@ -1,8 +1,9 @@
 # tomo-plugin-rollbar
 
-[![Gem Version](https://badge.fury.io/rb/tomo-plugin-rollbar.svg)](https://rubygems.org/gems/tomo-plugin-rollbar)
-[![Build Status](https://mattbrictson.semaphoreci.com/badges/tomo-plugin-rollbar/branches/main.svg?style=shields)](https://mattbrictson.semaphoreci.com/projects/tomo-plugin-rollbar)
-[![Code Climate](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar/badges/gpa.svg)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
+[![Gem Version](https://img.shields.io/gem/v/tomo-plugin-rollbar)](https://rubygems.org/gems/tomo-plugin-rollbar)
+[![Gem Downloads](https://img.shields.io/gem/dt/tomo-plugin-rollbar)](https://www.ruby-toolbox.com/projects/tomo-plugin-rollbar)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/tomo-plugin-rollbar/ci.yml)](https://github.com/mattbrictson/tomo-plugin-rollbar/actions/workflows/ci.yml)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/mattbrictson/tomo-plugin-rollbar)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that sends a notification to [Rollbar](https://rollbar.com) on a successful deploy.
 
