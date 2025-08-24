@@ -3,7 +3,6 @@
 [![Gem Version](https://img.shields.io/gem/v/tomo-plugin-rollbar)](https://rubygems.org/gems/tomo-plugin-rollbar)
 [![Gem Downloads](https://img.shields.io/gem/dt/tomo-plugin-rollbar)](https://www.ruby-toolbox.com/projects/tomo-plugin-rollbar)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/tomo-plugin-rollbar/ci.yml)](https://github.com/mattbrictson/tomo-plugin-rollbar/actions/workflows/ci.yml)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/mattbrictson/tomo-plugin-rollbar)](https://codeclimate.com/github/mattbrictson/tomo-plugin-rollbar)
 
 This is a [tomo](https://github.com/mattbrictson/tomo) plugin that sends a notification to [Rollbar](https://rollbar.com) on a successful deploy.
 
