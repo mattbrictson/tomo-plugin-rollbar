@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Provides rollbar tasks for tomo"
   spec.homepage = "https://github.com/mattbrictson/tomo-plugin-rollbar"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.1"
+  spec.required_ruby_version = ">= 3.2"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/mattbrictson/tomo-plugin-rollbar/issues",
