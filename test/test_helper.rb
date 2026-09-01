@@ -1,6 +1,7 @@
-$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "tomo/plugin/rollbar"
 require "tomo/testing"
 
-require "minitest/autorun"
+class Tomo::Plugin::Rollbar::Test < Megatest::Test
+end
+
 Dir[File.expand_path("support/**/*.rb", __dir__)].each { |rb| require(rb) }

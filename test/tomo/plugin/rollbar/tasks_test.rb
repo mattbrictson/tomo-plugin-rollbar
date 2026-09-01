@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Tomo::Plugin::Rollbar::TasksTest < Minitest::Test
+class Tomo::Plugin::Rollbar::TasksTest < Tomo::Plugin::Rollbar::Test
   def setup
     @tester = Tomo::Testing::MockPluginTester.new(
       "rollbar",
